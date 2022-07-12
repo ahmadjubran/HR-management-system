@@ -80,6 +80,6 @@ const hadi = new Employee(
   "./../assets/logo.png"
 );
 
-for (let i = 0; allEmployee.length; i++) {
+for (let i = 0; i < allEmployee.length; i++) {
   allEmployee[i].printSalary();
 }
