@@ -1,6 +1,8 @@
 "use strict";
 
 const allEmployee = [];
+const perentEl = document.getElementById("cards");
+
 let countID = 1000;
 function Employee(fullName, department, level, image) {
   // this.employeeID = employeeID;
@@ -29,57 +31,73 @@ Employee.prototype.salary = function () {
   }
 
   noTaxSalary = Math.floor(Math.random() * (max - min + 1) + min);
-  return (noTaxSalary * 100) / 107.5;
+  return ((noTaxSalary * 100) / 107.5).toFixed(0);
 };
 
-document.write(`<p class = "salary">Salary with the Tax ( Net Salary )</p>`);
-Employee.prototype.printSalary = function () {
-  document.write(`<p class = "salary">${this.fullName}: ${this.salary()}</p>`);
+Employee.prototype.printEmployeeCard = function () {
+  // 1. create Element
+  const divEl = document.createElement("div");
+  divEl.classList.add("card");
+  const img = document.createElement("img");
+  divEl.classList.add("card-img");
+  const pEl = document.createElement("p");
+  divEl.classList.add("card-text");
+
+  // 2. add content or attributes
+  img.src = `${this.image}`;
+  pEl.textContent = `Name: ${this.fullName} - ID: ${this.employeeID} \n`;
+  pEl.textContent += `Department: ${this.department} - Level: ${this.level} \n`;
+  pEl.textContent += `$${this.salary()}`;
+
+  // 3. append to the DOM
+  divEl.appendChild(img);
+  divEl.appendChild(pEl);
+  perentEl.appendChild(divEl);
 };
 
 const ghazi = new Employee(
   "Ghazi Samer",
   "Administration",
   "Senior",
-  "./../assets/logo.png"
+  "https://github.com/LTUC/new-prep-course-std/blob/main/Day10/Task/assets/Ghazi.jpg?raw=true"
 );
 const lana = new Employee(
   "Lana Ali",
   "Finance",
   "Senior",
-  "./../assets/logo.png"
+  "https://github.com/LTUC/new-prep-course-std/blob/main/Day10/Task/assets/Lana.jpg?raw=true"
 );
 const tamara = new Employee(
   "Tamara Ayoub",
   "Marketing",
   "Senior",
-  "./../assets/logo.png"
+  "https://github.com/LTUC/new-prep-course-std/blob/main/Day10/Task/assets/Tamara.jpg?raw=true"
 );
 const safi = new Employee(
   "Safi Walid",
   "Administration",
   "Mid-Senior",
-  "./../assets/logo.png"
+  "https://github.com/LTUC/new-prep-course-std/blob/main/Day10/Task/assets/Safi.jpg?raw=true"
 );
 const omar = new Employee(
   "Omar Zaid",
   "Development",
   "Senior",
-  "./../assets/logo.png"
+  "https://github.com/LTUC/new-prep-course-std/blob/main/Day10/Task/assets/Omar.jpg?raw=true"
 );
 const rana = new Employee(
   "Rana Saleh",
   "Development",
   "Junior",
-  "./../assets/logo.png"
+  "https://github.com/LTUC/new-prep-course-std/blob/main/Day10/Task/assets/Rana.jpg?raw=true"
 );
 const hadi = new Employee(
   "Hadi Ahmad",
   "Finance",
   "Mid-Senior",
-  "./../assets/logo.png"
+  "https://github.com/LTUC/new-prep-course-std/blob/main/Day10/Task/assets/Hadi.jpg?raw=true"
 );
 
-for (let i = 0; allEmployee.length; i++) {
-  allEmployee[i].printSalary();
+for (let i = 0; i < allEmployee.length; i++) {
+  allEmployee[i].printEmployeeCard();
 }
