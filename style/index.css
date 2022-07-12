@@ -77,6 +77,36 @@ body {
 /* MAIN */
 /*************************/
 
+#cards {
+  display: grid;
+  column-gap: 10rem;
+  row-gap: 10rem;
+  margin: 10rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  padding: 3rem;
+  background-color: #10b1c8;
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.card-img {
+  width: 40rem;
+}
+
+.card-text {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2;
+  color: #0f1014;
+  white-space: pre-line;
+}
+
 /*************************/
 /* FOOTER */
 /*************************/
@@ -123,14 +153,4 @@ body {
   text-decoration: none;
   color: #c6dbe6;
   font-size: 2.4rem;
-}
-
-/*************************/
-/* SALARY */
-/*************************/
-
-.salary {
-  font-size: 2.4rem;
-  line-height: 1.6;
-  text-align: center;
 }
